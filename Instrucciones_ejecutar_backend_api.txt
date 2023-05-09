@@ -1,0 +1,11 @@
+PASOS PARA EJECUTAR EL BACKEND
+
+1.- Abrir la cartepa biblioteca_api en Visual Studio Code o en una terminal ir al directorio.
+
+2.- Ejecutar el siguiente comando para instalar las dependencias
+   
+   npm install
+
+3.- Ejecutar el siguiente comando para iniciar el servidor con el api
+
+npm run dev
