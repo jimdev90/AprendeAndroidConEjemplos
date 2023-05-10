@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.adminbibliotecaapp.R;
+import com.example.adminbibliotecaapp.views.autoresview.AutoresScreenActivity;
+import com.example.adminbibliotecaapp.views.usuariosview.UsuariosScreenActivity;
 
 public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ViewHolder> {
 
@@ -34,10 +37,9 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull AdaptadorMenu.ViewHolder holder, int position) {
-
         String menu = listaMenu[position];
         Glide.with(context)
-                .load(context.getResources().toString(R.string.url_icon_menu) + menu.toLowerCase() + ".png" )
+                .load(context.getResources().getString(R.string.url_icon_menu)+menu.toLowerCase() + ".png")
                 .centerInside()
                 .placeholder(context.getResources().getDrawable(R.drawable.icon_falta_foto))
                 .into(holder.ivOpcion);
@@ -45,15 +47,39 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ViewHolder
         holder.tvOpcion.setText(menu.toUpperCase());
         holder.cvOpcionMenu.setOnClickListener( view -> {
             Intent intent;
+            Toast.makeText(context, menu, Toast.LENGTH_SHORT).show();
             switch (menu.toLowerCase()){
                 case "usuarios":
                     intent = new Intent(context, UsuariosScreenActivity.class);
                     context.startActivity(intent);
                     break;
+                case "autores":
+                    intent = new Intent(context, AutoresScreenActivity.class);
+                    context.startActivity(intent);
+                    break;
+//
+//                case "editoriales":
+//                    intent = new Intent(context, EditorialesScreenActivity.class);
+//                    context.startActivity(intent);
+//                    break;
+//
+//                case "categorias":
+//                    intent = new Intent(context, CategoriasScreenActivity.class);
+//                    context.startActivity(intent);
+//                    break;
+//
+//                case "libros":
+//                    intent = new Intent(context, LibrosScreenActivity.class);
+//                    context.startActivity(intent);
+//                    break;
+//
+//                case "prestamos":
+//                    intent = new Intent(context, PrestamosScreenActivity.class);
+//                    context.startActivity(intent);
+//                    break;
 
             }
         });
-
     }
 
     @Override
@@ -63,14 +89,13 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
         CardView cvOpcionMenu;
         ImageView ivOpcion;
         TextView tvOpcion;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             cvOpcionMenu = itemView.findViewById(R.id.cvOpcionMenu);
             ivOpcion = itemView.findViewById(R.id.ivOpcion);
             tvOpcion = itemView.findViewById(R.id.tvOpcion);

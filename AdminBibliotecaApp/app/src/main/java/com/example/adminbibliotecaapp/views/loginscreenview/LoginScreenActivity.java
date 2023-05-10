@@ -2,8 +2,11 @@ package com.example.adminbibliotecaapp.views.loginscreenview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.adminbibliotecaapp.R;
 import com.example.adminbibliotecaapp.databinding.ActivityLoginScreenBinding;
@@ -41,24 +44,26 @@ public class LoginScreenActivity extends AppCompatActivity {
             );
 
             if (!isValido){
-                Toasty.error(LoginScreenActivity.this, "Verifica que no existan campos vacios", Toasty.LENGTH_SHORT, true).show();
+               Toasty.error(LoginScreenActivity.this, "Verifica que no existan campos vacios", Toasty.LENGTH_SHORT, true).show();
+
                 return;
             }
 
             login();
 
         });
-
     }
 
     private void login(){
         usuario.setIdUsuario(binding.etUsuario.getText().toString().trim());
         usuario.setContrasena(binding.etcontrasena.getText().toString().trim());
 
+
         Call<AdminUsuarioResponse> call = webService.login(usuario);
         call.enqueue(new Callback<AdminUsuarioResponse>() {
             @Override
             public void onResponse(Call<AdminUsuarioResponse> call, Response<AdminUsuarioResponse> response) {
+
                 if (response.body().getCode().equals("200")){
                     utils.guardarSharedPreferences(LoginScreenActivity.this, response.body().getData().get(0));
                     Intent intent = new Intent(LoginScreenActivity.this, NavegacionScreenActivity.class);

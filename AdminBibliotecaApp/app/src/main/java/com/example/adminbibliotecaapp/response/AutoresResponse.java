@@ -2,11 +2,11 @@ package com.example.adminbibliotecaapp.response;
 
 import java.util.List;
 
-public class AdminUsuarioResponse {
+public class AutoresResponse {
 
     private String code;
     private String mensaje;
-    private List<DataAdminUsuario> data;
+    private List<DataAutor> data;
 
 
     public String getCode() {
@@ -25,11 +25,11 @@ public class AdminUsuarioResponse {
         this.mensaje = mensaje;
     }
 
-    public List<DataAdminUsuario> getData() {
+    public List<DataAutor> getData() {
         return data;
     }
 
-    public void setData(List<DataAdminUsuario> data) {
+    public void setData(List<DataAutor> data) {
         this.data = data;
     }
 }

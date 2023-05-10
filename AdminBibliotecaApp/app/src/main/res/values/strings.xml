@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">AdminBibliotecaApp</string>
 
-    <string name="url_icon_menu">http://192.168.0.6:3000/static/icon_menu/</string>
-    <string name="url_portadas">http://192.168.0.6:3000/static/portadas_libros/</string>
+    <string name="url_icon_menu">http://172.28.248.221:3000/static/icon_menu/</string>
+    <string name="url_portadas">http://172.28.248.221:3000/static/portadas_libros/</string>
 
     <string-array name="lista_menu">
         <item>usuarios</item>
-        <item>autores</item>
+        <item>autores</item>adm00
         <item>editoriales</item>
         <item>categorias</item>
         <item>libros</item>

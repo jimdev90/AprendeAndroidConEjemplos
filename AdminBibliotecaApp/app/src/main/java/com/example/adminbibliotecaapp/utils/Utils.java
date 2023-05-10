@@ -7,6 +7,7 @@ import com.example.adminbibliotecaapp.response.DataAdminUsuario;
 
 public class Utils {
 
+
     private static final int DURACION_SPLASH_SCREEN = 4000;
 
 
@@ -18,6 +19,23 @@ public class Utils {
         if (idUsuario.isEmpty() || contrasena.isEmpty()){
             return false;
         }else{
+            return true;
+        }
+    }
+
+
+    public boolean validarCamposAddUpdateUsuario(String idUsuario, String nomUsuario, String contrasena){
+        if (idUsuario.isEmpty() || nomUsuario.isEmpty() || contrasena.isEmpty()){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public boolean validarCamposAddUpdateAutor(String idAutor, String nomAutor){
+        if (idAutor.isEmpty() || nomAutor.isEmpty()){
+            return false;
+        }else {
             return true;
         }
     }
@@ -36,6 +54,11 @@ public class Utils {
         usuario.setIdUsuario(preferences.getString("idUsuario", ""));
         usuario.setNomUsuario(preferences.getString("nomUsuario", ""));
         return usuario;
+    }
+
+    public void borrarSharedPreferences(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("data_usuario", Context.MODE_PRIVATE);
+        preferences.edit().clear().apply();
     }
 
 }

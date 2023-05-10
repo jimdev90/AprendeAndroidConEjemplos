@@ -24,7 +24,7 @@ const conexion = mysql.createConnection(
         host:'localhost',
         database:'biblioteca_pruebas_udemy',
         user:'root',
-        password:''
+        password:'root',
     }
 )
 
@@ -50,6 +50,7 @@ app.post('/adminlogin', (req, res) => {
 
     query = `SELECT * FROM adminusuarios WHERE id_usuario='${admin.idUsuario}' AND contrasena='${admin.contrasena}'`
     conexion.query(query, (error, resultado) => {
+        console.log(query)
         if(error) return console.error(error.message);
         
         if(resultado.length == 1) {
@@ -78,6 +79,7 @@ app.post('/login', (req, res) => {
 
     query = `SELECT * FROM usuarios WHERE id_usuario='${usuario.idUsuario}' AND contrasena='${usuario.contrasena}'`
     conexion.query(query, (error, resultado) => {
+        console.log(query);
         if(error) return console.error(error.message);
         
         if(resultado.length == 1) {
