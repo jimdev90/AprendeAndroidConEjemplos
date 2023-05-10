@@ -2,6 +2,7 @@ package com.example.adminbibliotecaapp.views.loginscreenview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.adminbibliotecaapp.R;
@@ -10,6 +11,7 @@ import com.example.adminbibliotecaapp.response.AdminUsuarioResponse;
 import com.example.adminbibliotecaapp.response.DataAdminUsuario;
 import com.example.adminbibliotecaapp.retrofit.RetrofitClient;
 import com.example.adminbibliotecaapp.utils.Utils;
+import com.example.adminbibliotecaapp.views.navegacionview.NavegacionScreenActivity;
 import com.example.adminbibliotecaapp.webservices.WebService;
 
 import es.dmoral.toasty.Toasty;
@@ -59,7 +61,9 @@ public class LoginScreenActivity extends AppCompatActivity {
             public void onResponse(Call<AdminUsuarioResponse> call, Response<AdminUsuarioResponse> response) {
                 if (response.body().getCode().equals("200")){
                     utils.guardarSharedPreferences(LoginScreenActivity.this, response.body().getData().get(0));
-                    Toasty.success(LoginScreenActivity.this, response.body().getMensaje(), Toasty.LENGTH_SHORT, true).show();
+                    Intent intent = new Intent(LoginScreenActivity.this, NavegacionScreenActivity.class);
+                    startActivity(intent);
+                    finish();
                 }else {
                     Toasty.error(LoginScreenActivity.this, response.body().getMensaje(), Toasty.LENGTH_SHORT, true).show();
                 }

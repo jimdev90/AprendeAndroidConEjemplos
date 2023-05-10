@@ -30,4 +30,12 @@ public class Utils {
         editor.apply();
     }
 
+    public DataAdminUsuario leerSharedPreferences(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("data_usuario", Context.MODE_PRIVATE);
+        DataAdminUsuario usuario = new DataAdminUsuario();
+        usuario.setIdUsuario(preferences.getString("idUsuario", ""));
+        usuario.setNomUsuario(preferences.getString("nomUsuario", ""));
+        return usuario;
+    }
+
 }
