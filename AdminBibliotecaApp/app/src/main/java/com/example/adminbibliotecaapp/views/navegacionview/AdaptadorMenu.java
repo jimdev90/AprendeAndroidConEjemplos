@@ -50,7 +50,7 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.ViewHolder
                     intent = new Intent(context, UsuariosScreenActivity.class);
                     context.startActivity(intent);
                     break;
-                    
+
             }
         });
 
